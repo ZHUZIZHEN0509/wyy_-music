@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react'
 import { useRoutes, Link } from 'react-router-dom'
-import { useAppSelector, useAppDispatch } from './store'
-import routes from './router'
+import { useAppSelector, useAppDispatch } from '@/store'
+import routes from '@/router'
 import { shallowEqual } from 'react-redux'
-import { changeMessageAction } from './store/modules/counter'
-import AppHeader from './components/app-header'
+import { changeMessageAction } from '@/store/modules/counter'
 
 function App() {
   const { count, message } = useAppSelector(
@@ -22,7 +21,21 @@ function App() {
 
   return (
     <div className="App">
-      <AppHeader />
+      <div className="nav">
+        <Link to="/discover">发现音乐</Link>
+        <Link to="/mine">我的音乐</Link>
+        <Link to="/focus">关注</Link>
+        <Link to="/download">下载客户端</Link>
+      </div>
+      <div>
+        <div>
+          <span>
+            {count}
+            {message}
+          </span>
+          <button onClick={changeMessage}>修改message</button>
+        </div>
+      </div>
       <Suspense fallback="loading">
         <div className="main">{useRoutes(routes)}</div>
       </Suspense>
