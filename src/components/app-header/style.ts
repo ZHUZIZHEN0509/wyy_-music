@@ -89,6 +89,10 @@ export const AppHeaderWrapper = styled.div`
         border-color: #fff;
         cursor: pointer;
       }
+      a {
+        color: #787878;
+        display: block;
+      }
     }
   }
 
