@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-var-requires': [0],
     '@typescript-eslint/no-unused-vars': [0],
-    'prettier/prettier': ['error', { endOfLine: 'auto' }]
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    '@typescript-eslint/no-explicit-any': [0]
   }
 }
