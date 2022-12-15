@@ -11,5 +11,5 @@ export function getImageSize(
   width: number,
   height: number = width
 ): string {
-  return `${url}?params=${width}x${height}`
+  return `${url}?params=${width}y${height}`
 }

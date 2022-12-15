@@ -12,7 +12,12 @@ const theme = {
   mixin: {
     wrapv1: `
     width: 1100px;
-    margin: 0 auto;`
+    margin: 0 auto;`,
+    textNowrap: `
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    `
   }
 }
 

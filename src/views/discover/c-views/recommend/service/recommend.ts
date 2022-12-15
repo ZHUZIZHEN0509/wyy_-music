@@ -19,3 +19,8 @@ export const getNewAlbum = () => {
 export const getRankingList = (id: number) => {
   return zhuRequest.get({ url: '/playlist/detail', params: { id } })
 }
+
+//获取入驻歌手数据
+export const getJoinSong = (limit = 30) => {
+  return zhuRequest.get({ url: '/artist/list', params: { limit } })
+}
