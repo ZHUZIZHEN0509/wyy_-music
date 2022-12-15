@@ -40,16 +40,17 @@ const NewAlbum: FC<IProps> = (props) => {
               return (
                 <div key={item}>
                   <div className="albumList">
-                    {albums
-                      .slice(item * 5, (item + 1) * 5)
-                      .map((albumsItem) => {
-                        return (
-                          <NewAlbumItem
-                            key={albumsItem.id}
-                            newAlbumItem={albumsItem}
-                          />
-                        )
-                      })}
+                    {albums.length > 0 &&
+                      albums
+                        .slice(item * 5, (item + 1) * 5)
+                        .map((albumsItem) => {
+                          return (
+                            <NewAlbumItem
+                              key={albumsItem.id}
+                              newAlbumItem={albumsItem}
+                            />
+                          )
+                        })}
                   </div>
                 </div>
               )

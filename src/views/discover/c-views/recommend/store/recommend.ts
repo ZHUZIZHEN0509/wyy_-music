@@ -3,13 +3,15 @@ import {
   getBanner,
   getHotRecommend,
   getNewAlbum,
-  getRankingList
+  getRankingList,
+  getJoinSong
 } from '../service/recommend'
 import type {
   BannerState,
   HotRecommendState,
   AlbumsState,
-  RankingState
+  RankingState,
+  SongState
 } from './type'
 //请求轮播数据
 export const fetchBannersDataAction = createAsyncThunk(
@@ -76,18 +78,29 @@ export const fetchRankingListDataAction = createAsyncThunk(
   }
 )
 
+//请求入驻歌手数据
+export const fetchSongListDataAction = createAsyncThunk(
+  'fetchSongListData',
+  async (args, { dispatch }) => {
+    const res = await getJoinSong(5)
+    dispatch(changeSongListAction(res.artists))
+  }
+)
+
 interface InitialState {
   banners: BannerState[]
   hotRecommends: HotRecommendState[]
   albums: AlbumsState[]
   rankingList: RankingState[]
+  songList: SongState[]
 }
 
 const initialState: InitialState = {
-  banners: [],
-  hotRecommends: [],
-  albums: [],
-  rankingList: []
+  banners: [], //轮播图数据
+  hotRecommends: [], //热门推荐数据
+  albums: [], //新碟上架数据
+  rankingList: [], //榜单数据
+  songList: [] //入驻歌手数据
 }
 
 const recommendSlice = createSlice({
@@ -105,6 +118,9 @@ const recommendSlice = createSlice({
     },
     changeRankingListAction(state, { payload }) {
       state.rankingList = payload
+    },
+    changeSongListAction(state, { payload }) {
+      state.songList = payload
     }
   }
 })
@@ -113,6 +129,7 @@ export const {
   changeBannersAction,
   changeHotRecommendAction,
   changeNewAlbumAction,
-  changeRankingListAction
+  changeRankingListAction,
+  changeSongListAction
 } = recommendSlice.actions
 export default recommendSlice.reducer

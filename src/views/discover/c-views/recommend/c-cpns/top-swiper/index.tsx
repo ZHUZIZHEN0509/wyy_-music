@@ -13,7 +13,7 @@ interface IProps {
 const TopSwiper: FC<IProps> = (props) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   //获取轮播数据
-  const { banners } = useAppSelector(
+  const { banners = [] } = useAppSelector(
     (state) => ({
       banners: state.recommend.banners
     }),

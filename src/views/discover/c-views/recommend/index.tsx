@@ -7,11 +7,15 @@ import {
   fetchBannersDataAction,
   fetchHotRecommendDataAction,
   fetchNewAlbumsDataAction,
-  fetchRankingListDataAction
+  fetchRankingListDataAction,
+  fetchSongListDataAction
 } from './store/recommend'
 import HotRecommend from './c-cpns/hot-recommend'
 import NewAlbum from './c-cpns/new-album'
 import RankingList from './c-cpns/ranking-list'
+import UserLogin from './c-cpns/user-login'
+import JoinSong from './c-cpns/join-song'
+import HotRadio from './c-cpns/hot-radio'
 
 interface IProps {
   children?: ReactNode
@@ -25,6 +29,7 @@ const Recommend: FC<IProps> = (props) => {
     dispath(fetchHotRecommendDataAction())
     dispath(fetchNewAlbumsDataAction())
     dispath(fetchRankingListDataAction())
+    dispath(fetchSongListDataAction())
   }, [dispath])
 
   return (
@@ -36,7 +41,11 @@ const Recommend: FC<IProps> = (props) => {
           <NewAlbum />
           <RankingList />
         </div>
-        <div className="recommendRight"></div>
+        <div className="recommendRight">
+          <UserLogin />
+          <JoinSong />
+          <HotRadio />
+        </div>
       </div>
     </RecommendWrapper>
   )
