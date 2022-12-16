@@ -22,9 +22,10 @@ const RankingList: FC<IProps> = (props) => {
     <RankingListWrapper>
       <NavHeaderV1 title="榜单" />
       <div className="rankingListContent">
-        {rankingList.map((rankItem) => {
-          return <RankingListItem key={rankItem.id} rankingItem={rankItem} />
-        })}
+        {rankingList.length &&
+          rankingList.map((rankItem) => {
+            return <RankingListItem key={rankItem.id} rankingItem={rankItem} />
+          })}
       </div>
     </RankingListWrapper>
   )
